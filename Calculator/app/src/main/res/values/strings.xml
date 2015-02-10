@@ -25,6 +25,7 @@
     <string name="DefaultWeight">1</string>
     <string name="EqualsWeight">2</string>
     <string name="ResultWeight">4</string>
+    <string name="ResultWeightLandscape">5</string>
     <string name="ResultGravity">right</string>
 
 </resources>

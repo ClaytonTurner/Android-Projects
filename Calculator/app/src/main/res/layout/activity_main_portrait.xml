@@ -23,8 +23,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/Result"
                 android:gravity="right"
-                android:layout_weight="@string/ResultWeight"
-                android:layout_span="@string/ResultWeight"/>
+                android:layout_weight="@string/ResultWeightLandscape"
+                android:layout_span="@string/ResultWeightLandscape"
+                android:maxLength="@integer/maxResultLength"/>
         </TableRow>
         <TableRow>
             <Button

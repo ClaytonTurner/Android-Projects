@@ -2,4 +2,5 @@
 <resources>
     <integer name="portraitText">25</integer>
     <integer name="landscapeText">22</integer>
+    <integer name="maxResultLength">12</integer>
 </resources>
