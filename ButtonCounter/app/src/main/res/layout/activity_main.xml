@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
+        android:textStyle="bold"
         android:id="@+id/textView"
         android:textColor="@color/textColor"
         android:layout_centerVertical="true"
