@@ -22,10 +22,9 @@
     <string name="buttonMultiply">*</string>
     <string name="buttonEquals">=</string>
     <string name="buttonDecimal">.</string>
+    <string name="DefaultWeight">1</string>
     <string name="EqualsWeight">2</string>
     <string name="ResultWeight">4</string>
-    <string name="ResultLayoutColumn">3</string>
-    <string name="portraitText">25sp</string>
-    <string name="landscapeText">22sp</string>
+    <string name="ResultGravity">right</string>
 
 </resources>
