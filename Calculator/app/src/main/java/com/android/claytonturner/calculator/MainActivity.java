@@ -1,7 +1,5 @@
 package com.android.claytonturner.calculator;
 
-import android.content.Context;
-import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
