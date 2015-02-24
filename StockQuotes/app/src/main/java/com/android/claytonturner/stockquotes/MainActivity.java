@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 class RetrieveStock extends AsyncTask<String, Void, Stock> {
                     protected Stock doInBackground(String... symbols){
-                        
+
                         return null;
                     }
                     protected void onPostExecute(Stock stock){
