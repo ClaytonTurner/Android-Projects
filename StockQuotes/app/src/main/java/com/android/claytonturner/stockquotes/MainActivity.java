@@ -35,25 +35,31 @@ public class MainActivity extends ActionBarActivity {
                         }
                     }
                     protected void onPostExecute(Stock stock){
-                        TextView symbol = (TextView) findViewById(R.id.symbol_result);
-                        TextView name = (TextView) findViewById(R.id.name_result);
-                        TextView lastTradePrice = (TextView) findViewById(R.id.lastTradePrice_result);
-                        TextView lastTradeTime = (TextView) findViewById(R.id.lastTradeTime_result);
-                        TextView change = (TextView) findViewById(R.id.change_result);
-                        TextView yearRange = (TextView) findViewById(R.id.yearRange_result);
-                        symbol.setText(stock.getSymbol());
-                        name.setText(stock.getName());
-                        lastTradePrice.setText(stock.getLastTradePrice());
-                        lastTradeTime.setText(stock.getLastTradeTime());
-                        change.setText(stock.getChange());
-                        yearRange.setText(stock.getRange());
+                        if(stock != null) {
+                            TextView symbol = (TextView) findViewById(R.id.symbol_result);
+                            TextView name = (TextView) findViewById(R.id.name_result);
+                            TextView lastTradePrice = (TextView) findViewById(R.id.lastTradePrice_result);
+                            TextView lastTradeTime = (TextView) findViewById(R.id.lastTradeTime_result);
+                            TextView change = (TextView) findViewById(R.id.change_result);
+                            TextView yearRange = (TextView) findViewById(R.id.yearRange_result);
+                            symbol.setText(stock.getSymbol());
+                            name.setText(stock.getName());
+                            lastTradePrice.setText(stock.getLastTradePrice());
+                            lastTradeTime.setText(stock.getLastTradeTime());
+                            change.setText(stock.getChange());
+                            yearRange.setText(stock.getRange());
+                        }
+                        else{
+                            String error = "Error retrieving stock information";
+                            Toast.makeText(getApplicationContext()
+                                    , error, Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
                 String stockName = stockText.getText().toString();
                 if(!stockName.equals("")){
                     RetrieveStock stockToRetrieve = new RetrieveStock();
                     stockToRetrieve.execute(stockName);
-                    Toast.makeText(getApplicationContext(), stockName, Toast.LENGTH_LONG).show();
                 }
             }
         });

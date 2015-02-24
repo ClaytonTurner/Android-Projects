@@ -12,7 +12,7 @@ public class Stock
     // format for symbols: last trade (with time), change & percent change,
     // 52-week range, name
 
-    private static final String TAG_PREFIX = "edu.citadel.android.stockquotes.";
+    private static final String TAG_PREFIX = "com.android.claytonturner.stockquotes.";
 
     private String symbol;
     private String lastTradeTime;
