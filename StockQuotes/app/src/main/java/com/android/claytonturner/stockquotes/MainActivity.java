@@ -1,9 +1,13 @@
 package com.android.claytonturner.stockquotes;
 
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +16,27 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final EditText stockText = (EditText) findViewById(R.id.stock_prompt_edit_text);
+        stockText.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                class RetrieveStock extends AsyncTask<String, Void, Stock> {
+                    protected Stock doInBackground(String... symbols){
+                        
+                        return null;
+                    }
+                    protected void onPostExecute(Stock stock){
+
+                    }
+                }
+                String stockName = stockText.getText().toString();
+                if(!stockName.equals("")){
+                    RetrieveStock stockToRetrieve = new RetrieveStock();
+
+                    Toast.makeText(getApplicationContext(), stockName, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
 
