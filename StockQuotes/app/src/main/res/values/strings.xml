@@ -3,5 +3,12 @@
 
     <string name="app_name">Stock Quotes</string>
     <string name="action_settings">Settings</string>
+    <string name="stock_prompt">Enter stock symbol:</string>
+    <string name="symbol">Symbol:</string>
+    <string name="name">Name:</string>
+    <string name="lastTradePrice">Last Trade Price:</string>
+    <string name="lastTradeTime">Last Trade Time:</string>
+    <string name="change">Change:</string>
+    <string name="yearRange">52 Week Range:</string>
 
 </resources>
