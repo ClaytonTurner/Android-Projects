@@ -85,7 +85,14 @@ public class Stock
         }
     }
 
-
+    public void clearFields(){
+        this.symbol = "";
+        this.lastTradeTime = "";
+        this.lastTradePrice = "";
+        this.change = "";
+        this.range = "";
+        this.name = "";
+    }
     /**
      * Returns the stock's last trade time.
      */

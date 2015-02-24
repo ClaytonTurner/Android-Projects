@@ -17,43 +17,73 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        boolean isPortrait = getResources().getBoolean(R.bool.is_portrait);
+        if(isPortrait)
+            setContentView(R.layout.activity_main_portrait);
+        else
+            setContentView(R.layout.activity_main_landscape);
+
+        // Let's restore state if we need to
+        if(savedInstanceState != null){
+            TextView symbol = (TextView) findViewById(R.id.symbol_result);
+            TextView name = (TextView) findViewById(R.id.name_result);
+            TextView lastTradePrice = (TextView) findViewById(R.id.lastTradePrice_result);
+            TextView lastTradeTime = (TextView) findViewById(R.id.lastTradeTime_result);
+            TextView change = (TextView) findViewById(R.id.change_result);
+            TextView yearRange = (TextView) findViewById(R.id.yearRange_result);
+            symbol.setText(savedInstanceState.getString("symbol"));
+            name.setText(savedInstanceState.getString("name"));
+            lastTradePrice.setText(savedInstanceState.getString("lastTradePrice"));
+            lastTradeTime.setText(savedInstanceState.getString("lastTradeTime"));
+            change.setText(savedInstanceState.getString("change"));
+            yearRange.setText(savedInstanceState.getString("yearRange"));
+        }
 
         final EditText stockText = (EditText) findViewById(R.id.stock_prompt_edit_text);
         stockText.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                class RetrieveStock extends AsyncTask<String, Void, Stock> {
-                    protected Stock doInBackground(String... symbols){
-                        Stock stock = new Stock(symbols[0]);
+                class RetrieveStock extends AsyncTask<String, Void, Stock>{
+                    protected Stock doInBackground(String... symbol) {
+                        if(symbol[0].contains(" "))
+                            return new Stock("N/A");
+                        Stock stock = new Stock(symbol[0]);
                         try {
                             stock.load();
                             return stock;
                         }
                         catch(Exception e){
-                            Log.e("Loading error: ","Error loading stock" + e.getMessage());
-                            return null;
+                            Log.wtf("Yahoo Error","Error loading Yahoo Finance: " + e.getMessage());
+                            return new Stock("N/A");
                         }
                     }
+                    @Override
                     protected void onPostExecute(Stock stock){
-                        if(stock != null) {
-                            TextView symbol = (TextView) findViewById(R.id.symbol_result);
-                            TextView name = (TextView) findViewById(R.id.name_result);
-                            TextView lastTradePrice = (TextView) findViewById(R.id.lastTradePrice_result);
-                            TextView lastTradeTime = (TextView) findViewById(R.id.lastTradeTime_result);
-                            TextView change = (TextView) findViewById(R.id.change_result);
-                            TextView yearRange = (TextView) findViewById(R.id.yearRange_result);
-                            symbol.setText(stock.getSymbol());
-                            name.setText(stock.getName());
-                            lastTradePrice.setText(stock.getLastTradePrice());
-                            lastTradeTime.setText(stock.getLastTradeTime());
-                            change.setText(stock.getChange());
-                            yearRange.setText(stock.getRange());
+                        // Check if the symbol sent was malformed
+                        String error = "";
+                        if(stock.getSymbol().equals("N/A")){
+                            error = "Error in Stock name - perhaps malformed";
+                            stock.clearFields();
                         }
-                        else{
-                            String error = "Error retrieving stock information";
-                            Toast.makeText(getApplicationContext()
-                                    , error, Toast.LENGTH_LONG).show();
+                        // Check if the symbol was fine, but didn't have a match
+                        else if(stock.getLastTradeTime().equals("N/A")){
+                            error = "Error retrieving stock information - check the name";
+                            stock.clearFields();
                         }
+
+                        TextView symbol = (TextView) findViewById(R.id.symbol_result);
+                        TextView name = (TextView) findViewById(R.id.name_result);
+                        TextView lastTradePrice = (TextView) findViewById(R.id.lastTradePrice_result);
+                        TextView lastTradeTime = (TextView) findViewById(R.id.lastTradeTime_result);
+                        TextView change = (TextView) findViewById(R.id.change_result);
+                        TextView yearRange = (TextView) findViewById(R.id.yearRange_result);
+                        symbol.setText(((Stock) stock).getSymbol());
+                        name.setText(((Stock) stock).getName());
+                        lastTradePrice.setText(((Stock) stock).getLastTradePrice());
+                        lastTradeTime.setText(((Stock) stock).getLastTradeTime());
+                        change.setText(((Stock) stock).getChange());
+                        yearRange.setText(((Stock) stock).getRange());
+                    if(!error.equals(""))
+                        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
                     }
                 }
                 String stockName = stockText.getText().toString();
@@ -63,6 +93,17 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
+    }
+
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        // Can use .toString() or cast to String - both work
+        outState.putString("symbol",((TextView)findViewById(R.id.symbol_result)).getText().toString());
+        outState.putString("lastTradeTime",((TextView)findViewById(R.id.lastTradeTime_result)).getText().toString());
+        outState.putString("lastTradePrice",((TextView)findViewById(R.id.lastTradePrice_result)).getText().toString());
+        outState.putString("change",((TextView)findViewById(R.id.change_result)).getText().toString());
+        outState.putString("yearRange",((TextView)findViewById(R.id.yearRange_result)).getText().toString());
+        outState.putString("name",((TextView)findViewById(R.id.name_result)).getText().toString());
     }
 
 
