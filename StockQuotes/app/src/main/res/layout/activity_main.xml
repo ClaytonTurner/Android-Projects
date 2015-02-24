@@ -27,14 +27,14 @@
                 android:layout_weight="1"
                 android:textColor="@color/textColor"
                 android:textSize="@dimen/textSize" />
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
                 android:id="@+id/stock_prompt_edit_text"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:editable="true"
+                android:inputType="textCapCharacters"
                 android:textStyle="bold"
                 android:textColor="@color/textColor"
                 android:textSize="@dimen/textSize" />
