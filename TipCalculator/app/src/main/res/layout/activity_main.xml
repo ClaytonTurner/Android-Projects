@@ -19,12 +19,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/billPrompt"
+            android:layout_weight="1"
             android:id="@+id/billPrompt" />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/billAmount"
-            android:text="Enter amount here"
+            android:text=""
+            android:layout_weight="1"
             android:inputType="numberDecimal"/>
     </LinearLayout>
 
@@ -39,7 +41,8 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/tipGroup">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,21 +62,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20%"
-            android:id="@+id/twenty" />
+            android:id="@+id/twenty"
+            android:checked="true"/>
 
         </RadioGroup>
-
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tipCount"
+        android:layout_weight="1"
         android:id="@+id/tipCount" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_weight="1"
+        android:id="@+id/tipCount_result" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/totalPrice"
+        android:layout_weight="1"
         android:id="@+id/totalPrice" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_weight="1"
+        android:id="@+id/totalPrice_result" />
+    </LinearLayout>
 
 </LinearLayout>
