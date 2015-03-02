@@ -22,7 +22,58 @@
             android:id="@+id/billPrompt" />
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_count"
-            android:id="@+id/billAmount"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/billAmount"
+            android:text="Enter amount here"
+            android:inputType="numberDecimal"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Tip"
+        android:id="@+id/textView" />
+
+    <!-- No sense in localizing numbers
+        so let's hardcode the percentages -->
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%"
+            android:id="@+id/ten" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15%"
+            android:id="@+id/fifteen" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18%"
+            android:id="@+id/eighteen" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%"
+            android:id="@+id/twenty" />
+
+        </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tipCount"
+        android:id="@+id/tipCount" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalPrice"
+        android:id="@+id/totalPrice" />
+
+
 </LinearLayout>

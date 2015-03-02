@@ -4,5 +4,8 @@
     <string name="app_name">Tip Calculator</string>
     <string name="action_settings">Settings</string>
     <string name="billPrompt">Enter bill amount: </string>
+    <string name="Tip">Select tip</string>
+    <string name="tipCount">Tip: </string>
+    <string name="totalPrice">Total: </string>
 
 </resources>
