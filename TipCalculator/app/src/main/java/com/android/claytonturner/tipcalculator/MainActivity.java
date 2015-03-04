@@ -126,7 +126,7 @@ public class MainActivity extends ActionBarActivity {
         final EditText bill = (EditText) findViewById(R.id.billAmount);
         final TextView tipTotal = (TextView) findViewById(R.id.tipCount_result);
         final TextView totalPrice = (TextView) findViewById(R.id.totalPrice_result);
-        if(!bill.getText().equals("") && bill.getText().toString().matches(".*\\d.*")) {
+        if(!bill.getText().toString().equals("") && bill.getText().toString().matches(".*\\d.*")) {
             NumberFormat numformat = NumberFormat.getCurrencyInstance(Locale.US);
             Double enteredBill = Double.parseDouble(bill.getText().toString());
             Double tip = enteredBill * tipPercentage;
