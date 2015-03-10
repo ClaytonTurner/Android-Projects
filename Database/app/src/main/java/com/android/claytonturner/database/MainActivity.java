@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 
 public class MainActivity extends ListActivity {
@@ -29,21 +33,30 @@ public class MainActivity extends ListActivity {
 
     private void displayListview(SQLiteDatabase db){
         final ListView listView = (ListView) findViewById(android.R.id.list);
-        Cursor cursor = dbHelper.fetchAllBars(db);
-        String[] from = new String[] {
-                Database_Sqliteopenhelper.key_name,
-                Database_Sqliteopenhelper.key_address,
-                Database_Sqliteopenhelper.key_phone
-        };
-        int[] to = new int[] {
-            R.id.name,
-            R.id.address,
-            R.id.phone
-        };
-        SimpleCursorAdapter dataAdapter = new SimpleCursorAdapter(
-                this, R.layout.row_layout,cursor,from,to,0
-        );
-        listView.setAdapter(dataAdapter);
+        try {
+            Cursor cursor = dbHelper.fetchAllBars(db);
+            String[] from = new String[]{
+                    Database_Sqliteopenhelper.key_name,
+                    Database_Sqliteopenhelper.key_address,
+                    Database_Sqliteopenhelper.key_phone
+            };
+            int[] to = new int[]{
+                    R.id.name,
+                    R.id.address,
+                    R.id.phone_num
+            };
+            SimpleCursorAdapter dataAdapter = new SimpleCursorAdapter(
+                    this, R.layout.row_layout, cursor, from, to, 0
+            );
+            listView.setAdapter(dataAdapter);
+        }
+        catch(Exception e){
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            Log.e(this.getResources().getString(R.string.error),
+                    this.getResources().getString(R.string.adapterError)
+                            + "\n" + sw.toString());
+        }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,

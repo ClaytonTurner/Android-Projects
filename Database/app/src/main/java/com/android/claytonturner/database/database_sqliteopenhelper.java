@@ -58,7 +58,7 @@ public class Database_Sqliteopenhelper extends SQLiteOpenHelper{
 
     public Cursor fetchAllBars(SQLiteDatabase db){
         Cursor c = db.query(Database_Contract.TABLE_NAME,
-                new String[] {key_name,key_address,key_phone},
+                new String[] {key_id,key_name,key_address,key_phone},
                 null,null,null,null,null);
         if (c != null)
             c.moveToFirst();
