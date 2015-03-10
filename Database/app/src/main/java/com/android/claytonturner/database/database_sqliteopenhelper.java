@@ -1,5 +1,6 @@
 package com.android.claytonturner.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -40,6 +41,14 @@ public class database_sqliteopenhelper extends SQLiteOpenHelper{
                 "(843)-818-4080","(843)-853-8466",
                 "(843)-722-3474","(843)-737-5959",
                 "(843)-277-2990"};
+
+        for(int i = 0; i < names.length; i++){
+            ContentValues values = new ContentValues();
+            values.put("name",names[i]);
+            values.put("address",address[i]);
+            values.put("phone",phone[i]);
+            db.insert(tableName, null, values);
+        }
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldV, int newV){
