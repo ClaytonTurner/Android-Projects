@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">Database</string>
+    <!-- app name different than project name
+        Just wanna try it without refactoring -->
+    <string name="app_name">Charleston Bars</string>
     <string name="action_settings">Settings</string>
     <string name="emptyList">This is an empty list</string>
 

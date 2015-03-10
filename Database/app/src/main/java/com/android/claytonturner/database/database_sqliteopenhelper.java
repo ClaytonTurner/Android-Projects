@@ -28,6 +28,18 @@ public class database_sqliteopenhelper extends SQLiteOpenHelper{
 
     private void insertContacts(SQLiteDatabase db){
         // initial inserts for the database
+        String tableName = database_contract.TABLE_NAME;
+        String[] names = {"Midtown Bar & Grill","Warehouse",
+                "The Alley Charleston","Closed for Business",
+                "Fish","Fuel","Tattooed Moose"};
+        String[] address = {"559 King Street","45 Spring Street",
+                "131 Columbus Street","453 King Street",
+                "442 King Street","211 Rutledge Avenue",
+                "1137 Morrison Drive"};
+        String[] phone = {"(843)-737-4284","(843)-202-0712",
+                "(843)-818-4080","(843)-853-8466",
+                "(843)-722-3474","(843)-737-5959",
+                "(843)-277-2990"};
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldV, int newV){
