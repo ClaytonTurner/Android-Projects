@@ -13,10 +13,27 @@ public class database_sqliteopenhelper extends SQLiteOpenHelper{
             database_contract.DB_VERSION);
     }
     public void onCreate(SQLiteDatabase db){
+        String createSql =
+                "create table " + database_contract.TABLE_NAME
+                        + "("
+                        + "  _id integer primary key autoincrement,"
+                        + "  name      text not null,"
+                        + "  hours      text,"
+                        + "  phone_num text"
+                        + ")";
+        db.execSQL(createSql);
+        insertContacts(db);
 
     }
 
+    private void insertContacts(SQLiteDatabase db){
+        // initial inserts for the database
+    }
+
     public void onUpgrade(SQLiteDatabase db, int oldV, int newV){
+        // This is version 1 so no actions are required.
+        // Possible actions include dropping/recreating
+        // tables, saving/restoring data in tables, etc.
 
     }
 }
