@@ -37,15 +37,21 @@ public class Database_Sqliteopenhelper extends SQLiteOpenHelper{
         String tableName = Database_Contract.TABLE_NAME;
         String[] names = {"Midtown Bar & Grill","Warehouse",
                 "The Alley Charleston","Closed for Business",
-                "Fish","Fuel","Tattooed Moose"};
+                "Fish","Fuel","Tattooed Moose","HoM",
+                "Blind Tiger Pub","Big Gun Burger Shop & Bar", //will test uri encoding with &
+                "Charleston Beer Works Inc"};
         String[] address = {"559 King Street","45 Spring Street",
                 "131 Columbus Street","453 King Street",
                 "442 King Street","211 Rutledge Avenue",
-                "1137 Morrison Drive"};
+                "1137 Morrison Drive","563 King Street",
+                "36 Broad Street","137 Calhoun Street",
+                "468 King Street"};
         String[] phone = {"(843)-737-4284","(843)-202-0712",
                 "(843)-818-4080","(843)-853-8466",
                 "(843)-722-3474","(843)-737-5959",
-                "(843)-277-2990"};
+                "(843)-277-2990","(843)-573-7505",
+                "(843)-577-0088","(843)-789-3821",
+                "(843)-577-5885"};
 
         for(int i = 0; i < names.length; i++){
             ContentValues values = new ContentValues();

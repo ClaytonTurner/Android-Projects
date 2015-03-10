@@ -101,9 +101,10 @@ public class MainActivity extends ListActivity {
                 startActivity(callIntent);
             }
             else if(item.getTitle()=="Find in Maps") {
-                Intent mapsIntent = new Intent(Intent.ACTION_VIEW);
-                String uriAddress = address.replaceAll(" ","+");
-                mapsIntent.setType("geo:0,0?q="+uriAddress);
+                String uriAddress = "geo:0,0?q="+address.replaceAll(" ","+");
+                Uri mapsURI = Uri.parse(uriAddress);
+                Intent mapsIntent = new Intent(Intent.ACTION_VIEW,mapsURI);
+                mapsIntent.setPackage("com.google.android.apps.maps"); //explicit intent
                 /*Toast.makeText(getApplicationContext(),
                         uriAddress, Toast.LENGTH_LONG)
                         .show();*/
